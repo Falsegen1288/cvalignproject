@@ -1,0 +1,33 @@
+# Core ML & RAG stack
+torch
+transformers
+langchain
+sentence-transformers
+faiss-cpu  # For vector storage (alternative: pinecone-client)
+
+# PDF & DOCX parsing
+pymupdf  # Fast PDF parser (alias: fitz)
+python-docx  # For .docx file parsing
+
+# Web API
+fastapi
+uvicorn[standard]
+
+# File handling
+python-multipart  # For file uploads via FastAPI
+
+# General-purpose utilities
+tqdm
+pydantic
+
+# Frontend interaction (if planning React integration)
+aiofiles
+jinja2
+
+# Optional: Cloud support (if moving to S3 or similar later)
+boto3
+
+# Local development
+setuptools
+
+-e .
