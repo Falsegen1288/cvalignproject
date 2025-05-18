@@ -1,0 +1,41 @@
+from setuptools import setup, find_packages
+
+setup(
+    name='cvalign',
+    version='0.1.0',
+    author='Your Name',
+    author_email='your.email@example.com',
+    description='A GenAI-powered CV evaluator using RAG and Langchain',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    url='https://github.com/yourusername/cvalign',  # update if available
+    packages=find_packages(),
+    install_requires=[
+        'torch>=2.0',
+        'transformers>=4.36',
+        'sentence-transformers>=2.2.2',
+        'langchain>=0.1.14',
+        'langgraph>=0.0.20',
+        'faiss-cpu>=1.7.4',
+        'pypdf>=3.15.4',
+        'python-docx>=1.1.0',
+        'unstructured>=0.10.16',
+        'fastapi>=0.110.0',
+        'uvicorn[standard]>=0.29.0',
+        'jinja2>=3.1.3',
+        'python-dotenv>=1.0.1',
+        'boto3>=1.34.0',
+        'pandas>=2.2.0',
+        'numpy>=1.26.0',
+        'scikit-learn>=1.3.0',
+        'pdf2image>=1.16.3',
+        'docx2txt>=0.8',
+        'tqdm',
+        'rich',
+    ],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'Operating System :: OS Independent',
+    ],
+    python_requires='>=3.9',
+)
