@@ -1,23 +1,23 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
 
+# Allow frontend to connect (CORS)
 app = FastAPI()
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow your frontend to call it
+    allow_origins=["*"],  # Change to specific frontend URL in production
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class InputData(BaseModel):
-    role: str
-    requirements: List[str]
+class EvaluationRequest(BaseModel):
+    job_role: str
+    requirements: List[str]  # Accepts list from frontend form
 
 @app.post("/evaluate")
-def evaluate(data: InputData):
-    # Replace this with your LangChain or AI logic
-    result = f"Evaluating for role: {data.role} with {len(data.requirements)} requirements."
+def evaluate(request: EvaluationRequest):
+    result = run_genai_evaluation(request.job_role, request.requirements)
     return {"response": result}
