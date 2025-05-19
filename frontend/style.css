@@ -1,67 +1,103 @@
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-}
-
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-  text-align: center;
-}
-
-.button-group {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f3f3f3;
+  padding: 40px 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+/* Layout Wrapper */
+.form-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2e2e2e;
+}
+
+/* Button Row */
+.button-row {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
-
-.button-group button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.section {
-  display: none;
-}
-
-.section:not(.hidden) {
-  display: block;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.submit-btn {
-  display: block;
-  width: 100%;
+.button-row button {
+  flex: 1;
+  margin: 0 5px;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #0078d4;
   color: white;
-  font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background 0.2s;
+}
+.button-row button:hover {
+  background-color: #005fa3;
 }
 
+/* Form Card */
+.form-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.form-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+.form-card label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 500;
+  color: #444;
+}
+.form-card input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-bottom: 10px;
+  transition: border 0.2s;
+}
+.form-card input[type="text"]:focus {
+  outline: none;
+  border-color: #0078d4;
+}
+
+/* Submit Button */
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 .submit-btn:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
 
+/* Hide inactive sections */
 .hidden {
   display: none;
 }
