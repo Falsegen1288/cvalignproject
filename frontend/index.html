@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Role Selector</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="form-wrapper">
@@ -21,16 +21,18 @@
       <h2>Selector Details</h2>
 
       <label for="role">Desired Role</label>
-      <input type="text" id="role" placeholder="e.g. Data Analyst"/>
+      <input type="text" id="role" placeholder="e.g. Data Analyst" />
 
       <label>Role Requirements</label>
-      <input type="text" placeholder="Requirement 1"/>
-      <input type="text" placeholder="Requirement 2"/>
-      <input type="text" placeholder="Requirement 3"/>
-      <input type="text" placeholder="Requirement 4"/>
-      <input type="text" placeholder="Requirement 5"/>
+      <input type="text" placeholder="Requirement 1" />
+      <input type="text" placeholder="Requirement 2" />
+      <input type="text" placeholder="Requirement 3" />
+      <input type="text" placeholder="Requirement 4" />
+      <input type="text" placeholder="Requirement 5" />
 
       <button class="submit-btn">Enter</button>
+
+      <div id="ai-response" class="response-box"></div>
     </div>
 
     <!-- Placeholder Sections -->
@@ -50,6 +52,37 @@
       document.querySelectorAll('.form-card').forEach(el => el.classList.add('hidden'));
       document.getElementById(section + '-section').classList.remove('hidden');
     }
+
+    const submitBtn = document.querySelector('.submit-btn');
+    const roleInput = document.getElementById('role');
+    const requirementInputs = document.querySelectorAll('#selector-section input[type="text"]:not(#role)');
+    const responseBox = document.getElementById('ai-response');
+
+    submitBtn.addEventListener('click', async () => {
+      const role = roleInput.value.trim();
+      const requirements = Array.from(requirementInputs)
+        .map(input => input.value.trim())
+        .filter(req => req !== "");
+
+      if (!role || requirements.length === 0) {
+        alert("Please enter a role and at least one requirement.");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:8000/evaluate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ role, requirements })
+        });
+
+        const data = await res.json();
+        responseBox.textContent = data.response || "No response from AI.";
+      } catch (err) {
+        console.error(err);
+        responseBox.textContent = "Error connecting to AI backend.";
+      }
+    });
   </script>
 </body>
 </html>

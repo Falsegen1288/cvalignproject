@@ -97,7 +97,18 @@ body {
   background-color: #218838;
 }
 
-/* Hide inactive sections */
+/* Response Box */
+.response-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #0078d4;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Hidden Sections */
 .hidden {
   display: none;
 }
